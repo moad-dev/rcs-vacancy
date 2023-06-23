@@ -1,9 +1,9 @@
 import xlrd
 
-# accessing Column 'C' in this example
-COL_IDX = 2
+# accessing Column 'D' in this example
+COL_IDX = 3
 
-book = xlrd.open_workbook('your-file.xls', formatting_info=True)
+book = xlrd.open_workbook('Датасет.xls', formatting_info=True)
 first_sheet = book.sheet_by_index(0)
 
 for row_idx in range(first_sheet.nrows):
@@ -13,11 +13,12 @@ for row_idx in range(first_sheet.nrows):
     # skip rows where cell is empty
     if not text_cell:
         continue
-    print text_cell,
+    print(text_cell)
 
     text_cell_runlist = first_sheet.rich_text_runlist_map.get((row_idx, COL_IDX))
     if text_cell_runlist:
-        print '(cell multi style) SEGMENTS:'
+        print('text_cell_runlist:', text_cell_runlist)
+        print ('(cell multi style) SEGMENTS:')
         segments = []
         for segment_idx in range(len(text_cell_runlist)):
             start = text_cell_runlist[segment_idx][0]
@@ -38,11 +39,11 @@ for row_idx in range(first_sheet.nrows):
             })
 
         for segment in segments:
-            print segment['text'],
-            print 'italic:', segment['font'].italic,
-            print 'bold:', segment['font'].bold
+            print (segment['text'])
+            print ('italic:', segment['font'].italic)
+            print ('bold:', segment['font'].bold)
 
     else:
-        print '(cell single style)',
-        print 'italic:', book.font_list[text_cell_xf.font_index].italic,
-        print 'bold:', book.font_list[text_cell_xf.font_index].bold
+        print ('(cell single style)',)
+        print ('italic:', book.font_list[text_cell_xf.font_index].italic)
+        print ('bold:', book.font_list[text_cell_xf.font_index].bold)
