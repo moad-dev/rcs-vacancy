@@ -11,8 +11,8 @@ model = pipeline("text-classification", "model", device=device)
 
 @app.get("/")
 async def index(text: str):
-    result = {"responsibilitie": "",
-              "requirement": "",
+    result = {"responsibilities": "",
+              "requirements": "",
               "terms": "",
               "notes": ""}
     text = text.replace("\n", " ").replace("\t", " ").replace("\r", "")
