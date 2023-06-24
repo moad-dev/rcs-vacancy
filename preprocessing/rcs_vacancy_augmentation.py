@@ -46,26 +46,35 @@ with open('data/vacancies_original.csv', newline='') as csvfile:
 
 
 for vacancy in vacancies:
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": vacancy},
-        ],
-        temperature=1.12
-    )
+    try:
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": vacancy},
+            ],
+            temperature=1.12
+        )
+    except:
+        print('Ошибка запроса к openai')
+        continue
 
     try:
         augmented = json.loads(response.choices[0].message.content)
     except json.decoder.JSONDecodeError:
+        print('Ошибка JSON decoder')
         print(response.choices[0].message.content)
         continue
 
-    with open('data/vacancies_augmented.csv', 'a', newline='') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=augmented[0].keys())
+    try:
+        with open('data/vacancies_augmented.csv', 'a', newline='') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=augmented[0].keys())
 
-        for augmentation in augmented:
-            print(augmentation)
-            writer.writerow(augmentation)
+            for augmentation in augmented:
+                print(augmentation)
+                writer.writerow(augmentation)
+    except:
+        print('Ошибка записи в файл')
+        continue
 
     time.sleep(15)
