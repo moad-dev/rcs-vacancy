@@ -11,6 +11,8 @@ build/
 **/[v]env
 **/*.iml
 
+**/model
+
 # User-specific files
 **/*.rsuser
 **/*.suo

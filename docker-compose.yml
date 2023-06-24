@@ -4,7 +4,5 @@ services:
         image: rcs-vacancy-ai
         container_name: rcs-vacancy-ai
         restart: unless-stopped
-        environment:
-            - AI_PORT=48884
         ports:
-            - 80:48884 
+            - 8080:8080
