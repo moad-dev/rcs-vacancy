@@ -15,8 +15,10 @@ def split_list_merge_by_pattern(lst: list, pattern: str):
 
 def split(string_to_split: str):
     sentence_splited = split_str_with_razdel(string_to_split)
-    regular_splited = split_list_merge_by_pattern(sentence_splited, '\n|(?= [А-Я][а-я])|(?<=[а-я]:)|•|·')
-    # regular_splited = split_list_merge_by_pattern(regular_splited, '; +-|; +—|•|; +~|; +\+|—|-')
+    regular_splited = split_list_merge_by_pattern(sentence_splited, '(?<=[а-я]):|\n|•|·|—')
+    # |(?<=[а-я]:)
+    # |(?= [А-Я][а-я])
+    # |; +-|; +—|•|; +~|; +\+|—|-
     return regular_splited
 
 def split_to_bounds(lst: list):
@@ -37,20 +39,17 @@ def test():
     string_to_split = file.read()
     file.close()
     test = split(string_to_split)
+
     for token in test:
         print(token+"$")
 
     string, bounds = split_to_bounds(test)
-    print('\n-------\n'+string)
+    print('\n-------\n')
+    print(string)
     print(bounds)
 
-    # print ('\n\n\n\n')
-    # import nltk
-    # nltk.download('punkt')
-    # tokenizer = nltk.data.load('tokenizers/punkt/russian.pickle')
-    # fp = open("data/split_test.txt", mode='r')
-    # data = fp.read()
-    # print ('\n-----\n'.join(tokenizer.tokenize(data)))
+    # for b in bounds:
+    #     print('\n----\n'+string[b:])
 
 if __name__ == "__main__":
     test()
