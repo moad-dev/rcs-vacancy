@@ -11,7 +11,7 @@ build/
 **/[v]env
 **/*.iml
 
-**/[extractor_]model
+**/extractor_model
 
 # User-specific files
 **/*.rsuser
