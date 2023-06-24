@@ -7,4 +7,4 @@ services:
         environment:
             - AI_PORT=48884
         ports:
-            - 80:48884 
+            - 8080:48884
