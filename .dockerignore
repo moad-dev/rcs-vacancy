@@ -1,0 +1,12 @@
+**.git
+.idea
+.editorconfig
+**.gitignore
+**.gitattributes
+*.env*
+
+
+README.md
+
+Dockerfile
+docker-compose.yml
