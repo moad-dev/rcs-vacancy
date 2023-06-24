@@ -18,6 +18,15 @@ def split(string_to_split: str):
     regular_splited = split_list_merge_by_pattern(sentence_splited, '; +-|; +—|•|; +~|; +\+|—|-')
     return regular_splited
 
+def split_to_bounds(lst: list):
+    string = ''
+    bounds = [0]
+    for token in lst:
+        token += ' '
+        string += token
+        bounds.append(len(string)-1)
+    return string, bounds
+
 #
 # TEST
 #
@@ -30,6 +39,9 @@ def test():
     test = split(string_to_split)
     for token in test:
         print(token+"$")
+    string, bounds = split_to_bounds(test)
+    print(string)
+    print(bounds)
 
 if __name__ == "__main__":
     test()
