@@ -15,6 +15,7 @@ def split_list_merge_by_pattern(lst: list, pattern: str):
 def split(string_to_split: str):
     sentence_splited = split_str_with_razdel(string_to_split)
     regular_splited = split_list_merge_by_pattern(sentence_splited, '\n|(?<=[а-я]):')
+    regular_splited = split_list_merge_by_pattern(sentence_splited, '; +-|; +—|•|; +~|; +\+|—|-')
     return regular_splited
 
 #
