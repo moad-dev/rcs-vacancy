@@ -10,13 +10,14 @@ def split_list_merge_by_pattern(lst: list, pattern: str):
         token = token.replace('&quot;', '"')
         regular_splited = re.split(pattern, token)
         regular_splited = [text.strip() for text in regular_splited]
-        regular_splited = list(filter(None, regular_splited))
+        regular_splited = list(filter(lambda s: len(s) > 1, regular_splited))
         result += regular_splited
     return result
 
 def split(string_to_split: str):
     sentence_splited = split_str_with_razdel(string_to_split)
-    regular_splited = split_list_merge_by_pattern(sentence_splited, '; +-|; +—|; +~|; +\+|(?<=[а-я]):|\n|•|·|—|⠇|°|⠂|;')
+    #regular_splited = split_list_merge_by_pattern(sentence_splited, '; +-|; +—|; +~|; +\+|(?<=[а-я]):|\n|•|·|—|⠇|°|⠂|;')
+    regular_splited = split_list_merge_by_pattern(sentence_splited, '; +-|; +—|; +~|; +\+|(?<=[а-я]:)|\n|(?=•)|(?=·)|(?=—)|(?=-)|(?=⠇)|(?=°)|(?=⠂)|(?=;)|[Тт]ребования|[Оо]бязанности')
     # |(?<=[а-я]):
     # |(?= [А-Я][а-я])
     # |; +-|; +—|•|; +~|; +\+|—|-
