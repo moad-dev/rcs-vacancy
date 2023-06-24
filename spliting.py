@@ -18,5 +18,5 @@ def split(string_to_split: str) -> list[str]:
     # |(?<=[а-я]):
     # |(?= [А-Я][а-я])
     # |; +-|; +—|•|; +~|; +\+|—|-
-    regular_splited = split_list_merge_by_pattern(sentence_splited, '; +-|; +—|; +~|; +\+|(?<=[а-я]:)|\n|(?=•)|(?=·)|(?=—)|(?=-)|(?=⠇)|(?=°)|(?=⠂)|(?=;)|[Тт]ребования|[Оо]бязанности')
+    regular_splited = split_list_merge_by_pattern(sentence_splited, '; +-|; +—|; +~|; +\+|(?<=[а-я]:)|\n|(?=•)|(?=·)|(?=— )|(?=- )|(?=⠇)|(?=°)|(?=⠂)|(?=;)|[Тт]ребования|[Оо]бязанности|[Уу]словия')
     return regular_splited
