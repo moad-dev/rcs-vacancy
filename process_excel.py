@@ -31,7 +31,7 @@ def process(text: str) -> dict[str, str]:
 # Открываем лист excel
 
 COL_IDX = 3
-wb = xlrd.open_workbook('data/Датасет.xls', 'rw', formatting_info=True)
+wb = xlrd.open_workbook('preprocessing/data/Датасет.xls', 'rw', formatting_info=True)
 wb_sheet = wb.sheet_by_index(0)
 
 # Открываем новую книгу в режиме записи
@@ -61,4 +61,4 @@ for row_idx in range(1, wb_sheet.nrows):
 
 # Сохраняем новую книгу
 
-wb_w.save('data/Датасет_прогнанный.xls')
+wb_w.save('preprocessing/data/Датасет_прогнанный.xls')
