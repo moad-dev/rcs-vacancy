@@ -52,7 +52,11 @@ def merge_by_sim(segments, bottom_threshold, top_threshold):
 def merge_by_same(segments):
     i = 0
     while i != len(segments) - 1:
-        merged = merge_segments(segments[i], segments[i + 1])
+        try:
+            merged = merge_segments(segments[i], segments[i + 1])
+        except RuntimeError:
+            i += 1
+            continue
 
         conf = (
             max(segments[i]['scores'], key=segments[i]['scores'].get) ==
