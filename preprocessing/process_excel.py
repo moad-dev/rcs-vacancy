@@ -1,4 +1,4 @@
-from spliting import split
+from ..spliting import split
 import torch
 from transformers import pipeline
 
