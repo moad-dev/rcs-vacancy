@@ -3,6 +3,7 @@
 
 * Прогон вакансий из изначального набора данных: [results.xls](/results.xls)
 * Предобработка данных: [preprocessing](/preprocessing)
+* Аугментация данных: [augmentation](/augmentation)
 * Дообучение модели ```seninoseno/rubert-tiny-vacancy-information-extractor-augumented```:  [fine-tuning](/fine-tuning)
 
 
