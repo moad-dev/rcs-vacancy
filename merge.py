@@ -32,7 +32,11 @@ def merge_by_sim(segments, bottom_threshold, top_threshold):
         conf_1 = max(segments[i]['scores'].values())
         conf_2 = max(segments[i + 1]['scores'].values())
 
-        merged = merge_segments(segments[i], segments[i + 1])
+        try:
+            merged = merge_segments(segments[i], segments[i + 1])
+        except RuntimeError:
+            i += 1
+
         conf_m = max(merged['scores'].values())
         if (
             (conf_m > top_threshold) and
