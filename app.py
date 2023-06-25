@@ -25,7 +25,7 @@ async def index(text: str, merged: bool = False) -> dict[str, str]:
               "terms": "",
               "notes": ""}
 
-    text = text.replace("\n", " ").replace("\t", " ").replace("\r", "")
+    text = text.replace("\t", " ").replace("\r", "")
 
     if merged:
         segments = segmentize_and_merge(text)
