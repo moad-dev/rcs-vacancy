@@ -22,7 +22,7 @@ async def index(text: str) -> dict[str, str]:
               "requirements": "",
               "terms": "",
               "notes": ""}
-    text = text.replace("\n", " ").replace("\t", " ").replace("\r", "")
+    text = text.replace("\t", " ").replace("\r", "")
     sentences = split(text)
     predicts = [predict["label"] for predict in model.predict(sentences)]
     for sentence, label in zip(sentences, predicts):
