@@ -36,6 +36,7 @@ def merge_by_sim(segments, bottom_threshold, top_threshold):
             merged = merge_segments(segments[i], segments[i + 1])
         except RuntimeError:
             i += 1
+            continue
 
         conf_m = max(merged['scores'].values())
         if (
